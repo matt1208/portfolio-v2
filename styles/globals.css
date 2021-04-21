@@ -1,9 +1,25 @@
-html,
+html {
+  --body-bg-color: #FFFFFF;
+  /* --card-border: 2px solid #1E2019; */
+  --card-bg-color: #587B7F;
+  --tag-bg-color:  #587B7F;
+  --tag-border: #587B7F;
+  --title-color: #1E2019;
+  --subheader-color: #1E2019;
+  --text-color: #1E2019;
+  --text-border-color: #587B7F;
+  --smallheader-color: #1E2019;
+}
 body {
   padding: 0;
   margin: 0;
   font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
     Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
+  background-color: var(--body-bg-color);
+  }
+
+.dark {
+  background-color: #393E41;
 }
 
 a {
@@ -13,4 +29,43 @@ a {
 
 * {
   box-sizing: border-box;
+}
+
+@media screen and (max-width: 800px) {
+
+  img[src="divein-1.png"] {
+    width: 650px;
+  }
+  img[src="divein-2.png"] {
+    width: 650px;
+  }
+  img[src="divein-3.png"] {
+    width: 650px;
+  }
+
+}
+
+
+@media screen and (max-width: 700px) {
+
+  img[src="mydash-1.png"] {
+    width: 450px;
+  }
+  img[src="mydash-2.png"] {
+    width: 450px;
+  }
+  img[src="mydash-3.png"] {
+    width: 450px;
+  }
+
+  img[src="divein-1.png"] {
+    width: 470px;
+  }
+  img[src="divein-2.png"] {
+    width: 470px;
+  }
+  img[src="divein-3.png"] {
+    width: 470px;
+  }
+
 }

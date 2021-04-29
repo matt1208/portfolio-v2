@@ -38,7 +38,6 @@ export default function Home() {
         <div className={styles.navbar} style={{ width: "100%" }}>
           <img onClick={() => { setDark(!dark); myFunction(); }} style={{ marginTop: "20px", cursor: 'pointer' }} src="/sun.png"></img>
           <Link href="/projects"><p className={styles.rightnav}>Projects</p></Link>
-          <p className={styles.rightnav} style={{ paddingRight: '44px' }}>Link</p>
         </div>
 
         <div className={styles.main} style={cssProperties}>

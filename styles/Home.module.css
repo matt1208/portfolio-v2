@@ -23,6 +23,8 @@
   flex: 1;
   display: flex;
   flex-direction: column;
+  max-width: 900px;
+  width: 100%;
 }
 
 .title {
@@ -39,6 +41,7 @@
   font-weight: bold;
   font-size: 46px;
   color:var(--subheader-color);
+  width: 100%;
 }
 
 .desctext {
@@ -64,6 +67,20 @@
   color: var(--smallheader-color);;
   margin: 0px;
   padding: 15px;
+}
+
+.breadcrumb {
+  font-size: 15px;
+  font-weight: normal;
+  text-decoration: underline;
+  cursor: pointer;
+  margin-block-end: 0px;
+  color: var(--text-color);
+}
+
+.breadcrumb:hover {
+  color: #EA7317;
+  cursor: pointer;
 }
 
 .card {

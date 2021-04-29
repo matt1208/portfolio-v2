@@ -37,18 +37,25 @@ export default function Home() {
 
                 <div className={styles.navbar} style={{ width: "100%" }}>
                     <img onClick={() => { setDark(!dark); myFunction(); }} style={{ marginTop: "20px", cursor: 'pointer' }} src="/sun.png"></img>
-                    <p className={styles.rightnav}>Projects</p>
-                    <p className={styles.rightnav} style={{ paddingRight: '44px' }}>Link</p>
+                    <Link href="/projects"><p className={styles.rightnav}>Projects</p></Link>
                 </div>
 
                 <div className={styles.main} style={cssProperties}>
 
 
+
                     <p className={styles.subheader} style={{
                         marginTop: '20px'
                     }}>
+                        <Link href="/">
+                            <p
+                                className={styles.breadcrumb}
+                            >
+                                Home
+                                </p>
+                        </Link>
                         Projects
-          </p>
+                    </p>
 
                     <div className={styles.grid}>
 
@@ -69,7 +76,7 @@ export default function Home() {
                                 }}
                             >
                                 BrainDUMP
-              </p>
+                            </p>
                             <p
                                 style={{
                                     marginTop: "0px",
@@ -80,7 +87,7 @@ export default function Home() {
                                 className={styles.pctext}
                             >
                                 Description
-              </p>
+                            </p>
                         </div>
 
                         {/* Card 2 */}
@@ -99,7 +106,7 @@ export default function Home() {
                                 }}
                             >
                                 Students Who Code
-              </p>
+                            </p>
                             <p
                                 style={{
                                     marginTop: "0px",
@@ -110,10 +117,19 @@ export default function Home() {
                                 className={styles.pctext}
                             >
                                 Description
-              </p>
+                            </p>
                         </div>
                     </div>
 
+                    {/* <Link
+                        href="/projects"
+                    >
+                        <p
+                            className={styles.link}
+                        >
+                            More Projects
+              </p>
+                    </Link> */}
 
 
                     <br></br>
@@ -124,12 +140,12 @@ export default function Home() {
                 </div>
             </div >
 
-            <footer>
+            {/* <footer>
                 <div className={styles.container} style={cssProperties}>
                     <div className={styles.grid} style={{ marginTop: "20px" }}>
                         <div className={styles.live}>
                             <p>Currently Playing:
-              {data?.songUrl ? (
+                {data?.songUrl ? (
                                     <a
                                         href={data.songUrl}
                                         target="_blank"
@@ -150,11 +166,8 @@ export default function Home() {
                         </div>
                     </div>
 
-                    {/* 
-          <Link href="https://github.com/matt1208"><img style={{ cursor: 'pointer' }} src="github.png"></img></Link>
-          <p style={{ fontSize: '12px', color: '#393E41' }}>Icons from icons8.com </p> */}
                 </div>
-            </footer>
+            </footer> */}
         </>
     )
 }

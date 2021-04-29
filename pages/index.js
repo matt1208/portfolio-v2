@@ -2,6 +2,8 @@ import Head from 'next/head'
 import styles from '../styles/Home.module.css'
 import Link from 'next/link'
 import React, { useState } from 'react';
+import useSWR from 'swr';
+import fetcher from '../lib/fetcher';
 
 function myFunction() {
   document.body.classList.toggle('dark');
@@ -9,6 +11,8 @@ function myFunction() {
 
 export default function Home() {
   const [dark, setDark] = useState(false);
+  const { data } = useSWR('/api/now-playing', fetcher);
+  const project = "BrainDUMP"
   let cssProperties = {};
   if (dark) {
     cssProperties["--body-bg-color"] = "#393E41";
@@ -24,66 +28,162 @@ export default function Home() {
   }
 
   return (
-    <div className={styles.container} style={cssProperties}>
-      <Head>
-        <title>Matthew</title>
-        <link rel="icon" href="/home.png" />
-      </Head>
+    <>
+      <div className={styles.container} style={cssProperties}>
+        <Head>
+          <title>Matthew</title>
+          <link rel="icon" href="/home.png" />
+        </Head>
 
-      <div className={styles.navbar} style={{ width: "100%" }}>
-        <img onClick={() => { setDark(!dark); myFunction(); }} style={{ marginTop: "20px", cursor: 'pointer' }} src="/sun.png"></img>
-        <p className={styles.rightnav}>Link </p>
-        <p className={styles.rightnav} style={{ paddingRight: '44px' }}>Link</p>
-      </div>
+        <div className={styles.navbar} style={{ width: "100%" }}>
+          <img onClick={() => { setDark(!dark); myFunction(); }} style={{ marginTop: "20px", cursor: 'pointer' }} src="/sun.png"></img>
+          <Link href="/projects"><p className={styles.rightnav}>Projects</p></Link>
+          <p className={styles.rightnav} style={{ paddingRight: '44px' }}>Link</p>
+        </div>
 
-      <div className={styles.main} style={cssProperties}>
+        <div className={styles.main} style={cssProperties}>
 
-        <div
-          style={{
-            marginTop: '20px'
-          }}
-        >
-          <img src="/avatar.png" height="100px" width="100px" style={{ display: 'inline', verticalAlign: "middle" }} ></img>
-          <p className={styles.title} style={{ display: 'inline', verticalAlign: "middle", paddingLeft: '10px' }}>
-            Hi, I'm Matthew
+          <div
+            style={{
+              marginTop: '20px'
+            }}
+          >
+            <img src="/avatar.png" height="100px" width="100px" style={{ display: 'inline', verticalAlign: "middle" }} ></img>
+            <p className={styles.title} style={{ display: 'inline', verticalAlign: "middle", paddingLeft: '30px' }}>
+              Hi, I'm Matthew
+            </p>
+          </div>
+
+
+          <p className={styles.desctext}
+            style={{
+              marginTop: '40px'
+            }}
+          >
+            I’m a high school student, athlete, and developer. I am currently designing and building websites! Check out my projects and have fun exploring.
           </p>
-        </div>
 
+          <p className={styles.subheader} style={{
+            marginTop: '20px'
+          }}>
+            Projects
+          </p>
 
-        <p className={styles.desctext}
-          style={{
-            marginTop: '40px'
-          }}
-        >
-          I'm a 17 year old, high school student, athlete, and developer. I am currently working on developing different websites and other projects.
-        </p>
+          <div className={styles.grid}>
 
-        <p className={styles.subheader} style={{
-          marginTop: '20px'
-        }}>
-          Projects
-        </p>
+            {/* Card 1 */}
 
-        <div className={styles.grid}>
-          <div className={styles.card2}>
-            <p>project cards</p>
+            <div className={styles.card2}>
+
+              <img src="brain.svg" alt="Test Graphic" className={styles.cardimg} height="150px" width="200px" />
+
+              <p
+                className={styles.pctext}
+                style={{
+                  fontWeight: "bold",
+                  fontSize: "20px",
+                  marginBottom: "35px",
+                  position: "absolute",
+                  bottom: "0"
+                }}
+              >
+                BrainDUMP
+              </p>
+              <p
+                style={{
+                  marginTop: "0px",
+                  position: "absolute",
+                  bottom: "0",
+                  marginBottom: "15px"
+                }}
+                className={styles.pctext}
+              >
+                Description
+              </p>
+            </div>
+
+            {/* Card 2 */}
+            <div className={styles.card2}>
+
+              <img src="brain.svg" alt="Test Graphic" className={styles.cardimg} height="150px" width="200px" />
+
+              <p
+                className={styles.pctext}
+                style={{
+                  fontWeight: "bold",
+                  fontSize: "20px",
+                  marginBottom: "35px",
+                  position: "absolute",
+                  bottom: "0"
+                }}
+              >
+                Students Who Code
+              </p>
+              <p
+                style={{
+                  marginTop: "0px",
+                  position: "absolute",
+                  bottom: "0",
+                  marginBottom: "15px"
+                }}
+                className={styles.pctext}
+              >
+                Description
+              </p>
+            </div>
           </div>
-          <div className={styles.card2}>
-            <p>project cards</p>
-          </div>
+
+          <Link
+            href="/projects"
+          >
+            <p
+              className={styles.link}
+            >
+              More Projects
+            </p>
+          </Link>
+
+
+          <br></br>
+
+
+
+
         </div>
+      </div >
 
+      <footer>
+        <div className={styles.container} style={cssProperties}>
+          <div className={styles.grid} style={{ marginTop: "20px" }}>
+            <div className={styles.live}>
+              <p>Currently Playing:
+              {data?.songUrl ? (
+                  <a
+                    href={data.songUrl}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    {data.title}
+                  </a>
+                ) : (
+                  <p>
+                    Not Playing
+                  </p>
+                )}
+              </p>
+            </div>
 
-        {/* <br></br>
+            <div className={styles.live}>
+              <p>Currently Working On: {project}</p>
+            </div>
+          </div>
 
-
-        <footer>
+          {/* 
           <Link href="https://github.com/matt1208"><img style={{ cursor: 'pointer' }} src="github.png"></img></Link>
-          <p style={{ fontSize: '12px', color: '#393E41' }}>Icons from icons8.com </p>
-        </footer>  */}
-
-      </div>
-    </div >
+          <p style={{ fontSize: '12px', color: '#393E41' }}>Icons from icons8.com </p> */}
+        </div>
+      </footer>
+    </>
   )
 }
 

@@ -101,9 +101,11 @@
 }
 
 .card2 {
-   margin: 1rem; 
+   margin-left: 1rem; 
+   margin-right: 1rem;  
    flex-basis: 45%; 
   /* width: 45%; */
+  height: 250px;
   padding: 1.5rem;
   text-align: left;
   color: inherit;
@@ -111,6 +113,7 @@
   background-color: var(--card-bg-color);
   border-radius: 10px;
   transition: color 0.15s ease, border-color 0.15s ease;
+  position: relative;
 }
 
 .imagecard {
@@ -119,9 +122,21 @@
   padding: 1.5rem;
 }
 
+.cardimg {
+  display: block;
+    margin-left: auto;
+    margin-right: auto
+}
+
 @media only screen and (max-width: 700px) {
   .grid {
     display: block;
+  }
+}
+
+@media only screen and (max-width: 700px) {
+  .card2 {
+    margin-top: 10px;
   }
 }
 
@@ -150,4 +165,25 @@
   .rightnav {
     float: left ;
   }
+}
+
+.pctext {
+  color: #D3D0CB;
+}
+
+.live {
+  border-radius: 10px;
+  border: 5px solid #587B7F;
+  margin-left: 1rem; 
+  margin-right: 1rem;  
+  flex-basis: 45%; 
+  padding-left: 10px;
+  color: var(--text-color);
+}
+.link{
+  text-align: right;
+  text-decoration: underline;
+  cursor: pointer;
+  margin-right: 25px;
+  color: var(--text-color);
 }
